@@ -88,12 +88,6 @@ Um pedido de socorro rebelde foi criptografado.
 A única pista é que o sinal veio de um dos sistemas conectados pelas rotas espaciais.  
 Você deve explorar o grafo utilizando BFS para identificar, de forma eficiente, qual planeta enviou o sinal e em quantos saltos ele está.
 
-<div align="center">
-    Figura 2: Introdução Missão 1 – BFS
-    <br>
-    <img src="https://raw.githubusercontent.com/EDAII/Algoritmos_Grafos_Alianca_Rebelde/main/screenshots/missao1-intro-grafos.png" width="500">
-    <br><br>
-</div>
 
 ---
 
@@ -126,15 +120,27 @@ Esses dados são convertidos para estruturas de lista de adjacência utilizadas 
 ### Intro
 
 <div align="center">
-    Figura 3: Introdução do jogo
+    Figura 2: Introdução do jogo
     <br>
-    <img src="" width="500">
+    <img src="https://github.com/EDAII/Grafos_Alianca_Rebelde/blob/main/screenshots/intro_grafos.png?raw=true" width="500">
     <br><br>
 </div>
 
 ### Missão 1 – BFS
 
+<div align="center">
+    Figura 3: Introdução missão 1
+    <br>
+    <img src="https://github.com/EDAII/Grafos_Alianca_Rebelde/blob/main/screenshots/intro_missao_1.png?raw=true" width="500">
+    <br><br>
+</div>
 
+<div align="center">
+    Figura 4: Missão 1 concluída
+    <br>
+    <img src="https://github.com/EDAII/Grafos_Alianca_Rebelde/blob/main/screenshots/missao1_grafos_concluida.png?raw=true" width="500">
+    <br><br>
+</div>
 
 ---
 
