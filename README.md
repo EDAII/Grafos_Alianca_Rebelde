@@ -3,7 +3,7 @@
 <div align="center">
     Figura 1: Aliança Rebelde – Rotas da Orla Externa
     <br>
-    <img src="https://raw.githubusercontent.com/EDAII/Algoritmos_Grafos_Alianca_Rebelde/main/Imagens/alianca_simbolo.png" width="500">
+    <img src="https://raw.githubusercontent.com/EDAII/Algoritmos_Busca_Alianca_Rebelde/refs/heads/main/Imagens/alianca_simbolo.png" width="500">
     <br>
     <br>
 </div>
@@ -122,7 +122,7 @@ Esses dados são convertidos para estruturas de lista de adjacência utilizadas 
 <div align="center">
     Figura 2: Introdução do jogo
     <br>
-    <img src="https://github.com/EDAII/Grafos_Alianca_Rebelde/blob/main/screenshots/intro_grafos.png?raw=true" width="500">
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/main/screenshots/intro_grafos.png" width="500">
     <br><br>
 </div>
 
@@ -131,14 +131,14 @@ Esses dados são convertidos para estruturas de lista de adjacência utilizadas 
 <div align="center">
     Figura 3: Introdução missão 1
     <br>
-    <img src="https://github.com/EDAII/Grafos_Alianca_Rebelde/blob/main/screenshots/intro_missao_1.png?raw=true" width="500">
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/main/screenshots/intro_missao_1.png" width="500">
     <br><br>
 </div>
 
 <div align="center">
     Figura 4: Missão 1 concluída
     <br>
-    <img src="https://github.com/EDAII/Grafos_Alianca_Rebelde/blob/main/screenshots/missao1_grafos_concluida.png?raw=true" width="500">
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/main/screenshots/missao1_grafos_concluida.png" width="500">
     <br><br>
 </div>
 
