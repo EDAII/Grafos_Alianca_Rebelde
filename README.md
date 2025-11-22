@@ -122,7 +122,7 @@ Esses dados são convertidos para estruturas de lista de adjacência utilizadas 
 <div align="center">
     Figura 2: Introdução do jogo
     <br>
-    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/main/screenshots/intro_grafos.png" width="500">
+    <img src="./screenshots/intro_grafos.png" width="500">
     <br><br>
 </div>
 
