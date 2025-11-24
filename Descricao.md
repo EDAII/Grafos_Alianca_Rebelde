@@ -87,10 +87,83 @@ O jogo é composto por duas missões principais, cada uma abordando um algoritmo
 
 ---
 
-### MISSÃO 2: *A definir*  
-#### Estrutura: _____
+### MISSÃO 2: Estabilidade das Rotas
+#### Estrutura: Grafo Fortemente Conectado (SCC)
 
-> **Larissa.**  
+- **Contexto:**
+  Um ataque cibernético imperial comprometeu o sistema de navegação. Algumas rotas hiperespaciais se tornaram unidirecionais.
+  Para garantir a segurança da frota, é preciso que todos os sistemas sejam **mutuamente alcançáveis** (caminho de ida e caminho de volta).
+
+- **Descrição:**
+  A missão consiste em realizar um **diagnóstico SCC** completo para confirmar a estabilidade das rotas:
+  - Realizar a Busca em Largura (BFS) no grafo original (G).
+  - Construir o **Grafo Reverso** ($\text{G}^\text{T}$), invertendo a direção das rotas.
+  - Realizar a BFS no grafo reverso ($\text{G}^\text{T}$).
+  - Comparar os resultados para **validar** se o conjunto é Fortemente Conectado.
+
+- **Conceitos Aprendidos:**
+  - Definir a **Conectividade Forte** em grafos direcionados.
+  - Construir o **Grafo Reverso** ($\text{G}^\text{T}$).
+  - Entender a necessidade de **Duas BFS** para provar o SCC.
+  - Aplicar **validação estrita** na tomada de decisão.
+
+- **Analogias no Jogo:**
+  O **Grafo Reverso** simboliza o teste do caminho de volta.
+  A **Estabilidade Total** é alcançada quando o caminho de ida e volta é garantido.
+  A **Tomada de Decisão** representa a ordem do Comandante de prosseguir com recursos ou abortar a missão.
+
+---
+
+### MISSÃO 3: Infiltração na Base
+#### Estrutura: Busca em Profundidade (DFS)
+
+- **Contexto:**
+  É necessário plantar um explosivo no núcleo da base Imperial. Os túneis de ventilação formam um grafo, e cada túnel deve ser explorado para encontrar a rota mais profunda e discreta.
+  O caminho deve ser mapeado antes de ser usado.
+
+- **Descrição:**
+  A missão consiste em simular a execução do **algoritmo DFS** de forma interativa:
+  - Iniciar a **recursão** a partir do nó inicial.
+  - Explorar cada rota na **profundidade** máxima.
+  - Observar o **Backtracking** (Recuo Tático) ao atingir um beco sem saída.
+  - Marcar e registrar o caminho de visita.
+
+- **Conceitos Aprendidos:**
+  - Entender o fluxo de **recursão** e o uso da pilha.
+  - Identificar o momento do **Backtracking** (revelar o beco sem saída).
+  - Mapear a **ordem de visita** do DFS.
+  - Contrastar o conceito de Profundidade com Largura (BFS).
+
+- **Analogias no Jogo:**
+  A **recursão** simboliza o aprofundamento nos túneis de ventilação.
+  O **Backtracking** (Recuo Tático) representa o retorno para o último ponto de decisão no mapa.
+  A **Profundidade** da busca corresponde à discrição e complexidade da rota de infiltração.
+
+---
+
+### MISSÃO 4: Negociação de Alianças
+#### Estrutura: Grafo Bipartido
+
+- **Contexto:**
+  A Princesa Leia precisa formar uma aliança planetária contra o Império. Contudo, alguns planetas são inimigos naturais (conflito de interesse) e só podem se aliar a planetas de um grupo oposto.
+
+- **Descrição:**
+  A missão consiste em **colorir** o grafo para verificar se a aliança é estável:
+  - Dividir os planetas em dois grupos (Grupo Rebelde - Azul e Grupo Neutro - Vermelho).
+  - Garantir que não existam **arestas (ligações) entre planetas da mesma cor**.
+  - Identificar se ocorre um **conflito de cor** (prova de que o grafo não é Bipartido).
+
+- **Conceitos Aprendidos:**
+  - Definir e identificar um **Grafo Bipartido** (2-colorível).
+  - Utilizar o algoritmo de **coloração** para dividir nós em dois conjuntos.
+  - Reconhecer que um **conflito de cor** prova a instabilidade da aliança (falha do Grafo Bipartido).
+  - Relacionar as arestas com a regra de aliança/inimizade.
+
+- **Analogias no Jogo:**
+  A **coloração** representa a separação dos planetas em dois grupos de aliança.
+  O **conflito de cor** simboliza a instabilidade da aliança, que o Império pode explorar.
+  A **estabilidade** é garantida quando a regra de Bipartição é mantida em todo o conjunto.
+
 
 ---
 
