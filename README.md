@@ -147,7 +147,7 @@ Esses dados são convertidos para estruturas de lista de adjacência utilizadas 
 
 ## Link do vídeo
 
-[Assista ao vídeo aqui](LINK)
+[Assista ao vídeo aqui](https://youtu.be/FxEURqagcZ8)
 
 <br>
 
