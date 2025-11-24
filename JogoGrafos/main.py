@@ -5,17 +5,30 @@ import sys
 import random
 
 
+# IMPORTAÇÕES CORRIGIDAS PARA A NOVA PASTA 'missoes_grafos'
 try:
-    from missoes_arvores.missao1 import Missao1
+    from missoes_grafos.missao1 import Missao1
 except ImportError as e:
     Missao1 = None
     print(f"ALERTA DE IMPORTAÇÃO: Missao1 não pôde ser carregada. Erro: {e}")
 
 try:
-    from missoes_arvores.missao2 import Missao2
+    from missoes_grafos.missao2 import Missao2
 except ImportError as e:
     Missao2 = None
     print(f"ALERTA DE IMPORTAÇÃO: Missao2 não pôde ser carregada. Erro: {e}")
+
+try:
+    from missoes_grafos.missao3 import Missao3
+except ImportError as e:
+    Missao3 = None
+    print(f"ALERTA DE IMPORTAÇÃO: Missao3 não pôde ser carregada. Erro: {e}")
+
+try:
+    from missoes_grafos.missao4 import Missao4
+except ImportError as e:
+    Missao4 = None
+    print(f"ALERTA DE IMPORTAÇÃO: Missao4 não pôde ser carregada. Erro: {e}")
 
 
 class GameManager:
@@ -55,10 +68,18 @@ class GameManager:
         self.update_display()
     
     def carregar_imagens(self):
-        # Reduzir o fator de subsample para missao1.png para que ela não fique muito pequena
-        nomes_imagens = {"Alianca_Rebelde.png": 2, "alianca_simbolo.png": 2, "missao1.png": 3} 
+        # Imagens atualizadas para incluir M2, M3 e M4 de grafos
+        nomes_imagens = {
+            "Alianca_Rebelde.png": 2, 
+            "alianca_simbolo.png": 2, 
+            "missao1.png": 3,
+            "missao2_grafos.png": 3, 
+            "missao3_grafos.png": 3, 
+            "missao4_grafos.png": 3 
+        } 
         for nome_img, subsample_factor in nomes_imagens.items():
             try:
+                # O caminho deve ser ajustado para JogoGrafos/img/
                 caminho_img = os.path.join(self.img_dir, nome_img)
                 if os.path.exists(caminho_img):
                     original_img = PhotoImage(file=caminho_img)
@@ -136,30 +157,38 @@ class GameManager:
             else:
                 self._display_mission_not_found("Missão 1")
         elif self.game_state == "MISSION_1_SUCCESS":
-            self.display_sucesso_missao("Missao1")
+            self.display_sucesso_missao("Missao1") 
 
         elif self.game_state == "START_MISSION_2":
             if Missao2:
                 self._clear_content_frame()
                 self.current_mission_obj = Missao2(self.root, self, self.content_frame)
-                self.current_mission_obj.iniciar_missao_contexto()
+                self.current_mission_obj.iniciar_missao_contexto(image_to_display=self.imagens.get("missao2_grafos.png"))
             else:
                 self._display_mission_not_found("Missão 2")      
-        
-        
         elif self.game_state == "MISSION_2_SUCCESS":
-            self._display_text_screen(
-                "Operação de Exploração Concluída!",
-                [
-                    "Incrível! As rotas principais da Orla Externa foram traçadas.",
-                    "A frota rebelde agora pode navegar com mais segurança entre sistemas aliados.",
-                    "Sua análise de grafos foi decisiva para manter a Rebelião um passo à frente do Império."
-                ],
-                "Ver o Epílogo",
-                "ALL_MISSIONS_COMPLETED_V3",
-                button_style="Accent.TButton",
-            )
+            self.display_sucesso_missao("Missao2") 
+            
+        elif self.game_state == "START_MISSION_3":
+            if Missao3:
+                self._clear_content_frame()
+                self.current_mission_obj = Missao3(self.root, self, self.content_frame)
+                self.current_mission_obj.iniciar_missao_contexto(image_to_display=self.imagens.get("missao3_grafos.png"))
+            else:
+                self._display_mission_not_found("Missão 3")
+        elif self.game_state == "MISSION_3_SUCCESS":
+            self.display_sucesso_missao("Missao3") 
 
+        elif self.game_state == "START_MISSION_4":
+            if Missao4:
+                self._clear_content_frame()
+                self.current_mission_obj = Missao4(self.root, self, self.content_frame)
+                self.current_mission_obj.iniciar_missao_contexto(image_to_display=self.imagens.get("missao4_grafos.png"))
+            else:
+                self._display_mission_not_found("Missão 4")
+        elif self.game_state == "MISSION_4_SUCCESS":
+            self.display_sucesso_missao("Missao4")
+            
         elif self.game_state == "ALL_MISSIONS_COMPLETED_V3":
             narrativa = [
                 "As rotas da Rebelião agora formam uma teia secreta entre sistemas livres.",
@@ -182,7 +211,7 @@ class GameManager:
         self._clear_content_frame()
         tk.Label(self.content_frame, text=f"{mission_name} não foi encontrada.", font=self.header_font_obj, fg="red", bg=self.bg_color_dark).pack(pady=20)
         tk.Label(self.content_frame, text=f"A classe para a {mission_name} não foi carregada. Por favor, verifique se o arquivo existe e se o nome da classe está correto.", wraplength=700, justify=tk.CENTER, font=self.narrative_font_obj, fg=self.fg_color_light, bg=self.bg_color_dark).pack(padx=20, pady=10)
-        ttk.Button(self.content_frame, text="Voltar ao Menu Principal", command=lambda: self.set_game_state("MENU_PRINCIPAL"), style="Accent.Dark.TButton").pack(pady=20)
+        ttk.Button(self.content_frame, text="Voltar ao Menu Principal", command=lambda: self.set_game_state("MENU_PRINCIPAL"), style="Dark.TButton").pack(pady=20)
 
     def display_sucesso_missao(self, mission_id):
         self._clear_content_frame()
@@ -193,13 +222,17 @@ class GameManager:
             fg="green",
             bg=self.bg_color_dark
         ).pack(pady=20)
+        
+        text_map = {
+            "Missao1": "Você mapeou corretamente os sistemas e identificou a origem do sinal de socorro. Preparando o próximo salto...",
+            "Missao2": "As rotas principais foram diagnosticadas! A estabilidade das rotas de retorno foi confirmada. Preparando o próximo salto...",
+            "Missao3": "A infiltração foi um sucesso! O caminho para o núcleo foi encontrado usando a profundidade da DFS. Preparando o próximo salto...",
+            "Missao4": "A Aliança foi formada! Os planetas inimigos foram organizados em dois grupos estáveis. Relatório final pronto."
+        }
+        
         tk.Label(
             self.content_frame,
-            text=(
-                "Excelente trabalho, Analista de Rotas! "
-                "Você mapeou corretamente os sistemas e identificou a origem do sinal de socorro. "
-                "Preparando o próximo salto..."
-            ),
+            text=text_map.get(mission_id, "Excelente trabalho! Preparando o próximo salto..."),
             wraplength=700,
             justify=tk.CENTER,
             font=self.narrative_font_obj,
@@ -208,12 +241,12 @@ class GameManager:
         ).pack(padx=20, pady=10)
 
         next_mission_number = int(mission_id.replace("Missao", "")) + 1
-        if next_mission_number <= 2:
+        if next_mission_number <= 4:
             next_state = f"START_MISSION_{next_mission_number}"
             button_text = f"Avançar para a Missão {next_mission_number}"
         else:
-            next_state = "MISSION_2_SUCCESS"
-            button_text = "Continuar..."
+            next_state = "ALL_MISSIONS_COMPLETED_V3"
+            button_text = "Continuar para o Relatório Final"
             
         ttk.Button(self.content_frame, text=button_text, command=lambda: self.set_game_state(next_state), style="Accent.Dark.TButton").pack(pady=20)
     
