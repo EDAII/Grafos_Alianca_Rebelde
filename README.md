@@ -178,6 +178,85 @@ Esses dados são convertidos para estruturas de lista de adjacência utilizadas 
     <br><br>
 </div>
 
+
+
+### Missão 2 – Estabilidade das Rotas (Grafo Fortemente Conectado)
+
+<div align="center">
+    Figura 5: Missão 2 Intro
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0001_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 6: MIssão 2 - etapa 1
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0002_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 7: Missão 2 - Ajuda
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0003_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 8: Missão 2 - Etapa 2
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0004_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 9: Missão 2 - Grafa reverso 
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0007_grafos.png" width="500">
+    <br><br>
+</div>
+
+
+### Missão 3 – Infiltração na Base (Busca em Profundidade - DFS)
+
+<div align="center">
+    Figura 10: Missao 3 - Intro
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0008_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 11: DFS
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0009_grafos.png" width="500">
+    <br><br>
+</div>
+
+### Missão 4 – Negociação de Alianças (Grafo Bipartido)
+
+<div align="center">
+    Figura 12: Missao 4 - Intro
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0010_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 13: Missao 4 - Bipartido
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0011_grafos.png" width="500">
+    <br><br>
+</div>
+
+<div align="center">
+    Figura 14: Missao 4 - Dica
+    <br>
+    <img src="https://raw.githubusercontent.com/EDAII/Grafos_Alianca_Rebelde/refs/heads/main/screenshots/0012_grafos.png" width="500">
+    <br><br>
+</div>
+
 ---
 
 ## Instalação
