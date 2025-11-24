@@ -1,4 +1,3 @@
-# missao2.py - Fortemente Conectado (Grafo)
 import tkinter as tk
 from tkinter import ttk, messagebox
 import os
@@ -6,12 +5,12 @@ from PIL import Image, ImageTk
 from collections import deque
 import random
 
-# Importa o algoritmo (assumindo que o strong_connect.py está na pasta correta)
+
 from algoritmos_grafos.strong_connect import is_strongly_connected_component, get_transposed_graph, _bfs_check
 
 class Missao2:
     """
-    Missão 2: Estabilidade das Rotas – Fortemente Conectado (SCC)
+    Missão 2: Estabilidade das Rotas – Fortemente Conectado
     Simulação interativa passo a passo com validação estrita da decisão do jogador.
     """
     def __init__(self, root, game_manager, content_frame):
@@ -19,7 +18,6 @@ class Missao2:
         self.game_manager = game_manager
         self.base_content_frame = content_frame
 
-        # Grafo de Desafio: NÃO Fortemente Conectado (Hoth isolado)
         self.graph_original = {
             "Tatooine": ["Naboo", "Coruscant"], "Naboo": ["Coruscant"], "Coruscant": ["Endor"], 
             "Endor": ["Dagobah"], "Dagobah": ["Tatooine", "Hoth"], "Hoth": ["Dagobah"]
@@ -31,7 +29,7 @@ class Missao2:
         self.max_steps = 6 
         
         self.transposed_graph = get_transposed_graph(self.graph_original)
-        self.is_scc_gabarito = self._is_scc_gabarito_calc() # Gabarito é False para este grafo
+        self.is_scc_gabarito = self._is_scc_gabarito_calc() 
         
         self.status_message = "Pronto para iniciar o diagnóstico."
         self.graph_to_draw = self.graph_original
@@ -47,7 +45,7 @@ class Missao2:
         self.btn_next = None
         self.next_command = "INICIAR"
         
-        # Inicialização dos atributos de UI
+
         self.lbl_listas = None
         self.lbl_etapa = None
         self.lbl_fila = None
@@ -62,11 +60,11 @@ class Missao2:
         self.conceitos = {
             "BUSCA EM LARGURA (BFS)": "Explora o grafo em camadas, usando uma FILA (FIFO) para garantir que os nós mais próximos (menor distância) sejam visitados primeiro. O nó inicial está na Camada 0.",
             "GRAFO REVERSO (G^T)": "Um grafo onde a direção de TODAS as arestas foi invertida. É essencial para verificar se há um caminho de VOLTA para o nó inicial, provando a conectividade.",
-            "FORTEMENTE CONECTADO (SCC)": "Um conjunto de nós é SCC se, e somente se, todos os nós são alcançáveis a partir de um nó inicial no grafo original (G) E no grafo reverso (G^T).",
+            "FORTEMENTE CONECTADO (FORTEMENTE CONECTADO)": "Um conjunto de nós é FORTEMENTE CONECTADO se, e somente se, todos os nós são alcançáveis a partir de um nó inicial no grafo original (G) E no grafo reverso (G^T).",
         }
 
     def _is_scc_gabarito_calc(self):
-        """Calcula o resultado SCC real para usar como gabarito."""
+        """Calcula o resultado FORTEMENTE CONECTADO real para usar como gabarito."""
         visited_orig = _bfs_check(self.graph_original, self.start_node)
         transposed_graph = get_transposed_graph(self.graph_original)
         visited_trans = _bfs_check(transposed_graph, self.start_node)
@@ -136,7 +134,7 @@ class Missao2:
 
         contexto = (
             "**Comandante Organa:** O Império sabotou os hiper-roteadores! Rotas unidirecionais significam que nossa frota pode ir, mas não voltar. "
-            "A frota só está segura se o conjunto de sistemas for **Fortemente Conectado (SCC)**: garantindo o caminho de IDA e o caminho de VOLTA.\n\n"
+            "A frota só está segura se o conjunto de sistemas for **Fortemente Conectado**: garantindo o caminho de IDA e o caminho de VOLTA.\n\n"
             "**Procedimento:** Usaremos a lógica do Grafo Reverso e Duas BFS para diagnosticar a conectividade."
         )
         tk.Label(
@@ -157,12 +155,11 @@ class Missao2:
         ).pack(pady=10)
 
     def _iniciar_diagnostico(self):
-        """Configura o estado inicial para a primeira BFS e monta a tela."""
+
         self._resetar_estado_bfs()
         
         self.current_step = 1
         
-        # Estado inicial do BFS (Tatooine na Camada 0)
         self.bfs_queue.append(self.start_node)
         self.bfs_visited.add(self.start_node)
         self.visited_original.add(self.start_node)
@@ -174,7 +171,6 @@ class Missao2:
         self._montar_tela_missao()
 
     def _formatar_listas(self, graph):
-        """Formata as listas de adjacência para o painel lateral."""
         lines = []
         for node in sorted(graph.keys()):
             neighbors = " -> ".join(graph.get(node, []))
@@ -198,7 +194,6 @@ class Missao2:
         right = tk.Frame(main, bg=self.cor_fundo)
         right.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
-        # --- Sub-Painel de Listas de Adjacência (Topo da Direita) ---
         list_frame = tk.Frame(right, bg=self.cor_fundo)
         list_frame.pack(fill=tk.X, pady=(0, 10))
         
@@ -207,7 +202,6 @@ class Missao2:
         self.lbl_listas = tk.Label(list_frame, text=self._formatar_listas(self.graph_to_draw), font=("Arial", 9), fg=self.cor_texto, bg=self.cor_fundo, justify=tk.LEFT)
         self.lbl_listas.pack(anchor="w")
 
-        # --- Elementos de Controle (Esquerda) ---
         self.lbl_etapa = tk.Label(left, text=f"ETAPA: {self.current_step} / 4", font=self.font_subtitulo, fg=self.cor_titulo, bg=self.cor_fundo)
         
         self.lbl_fila = tk.Label(left, text=f"FILA (Próximos a visitar): {list(self.bfs_queue)}", font=self.font_subtitulo, fg=self.cor_dica, bg=self.cor_fundo, wraplength=300, justify=tk.LEFT)
@@ -237,7 +231,6 @@ class Missao2:
         # Botão de Ajuda
         ttk.Button(left, text="Ajuda / Conceitos", command=self._mostrar_conceito_ajuda).pack(fill=tk.X, pady=5)
         
-        # Canvas de desenho (Abaixo das listas de adjacência na direita)
         self.canvas = tk.Canvas(right, bg=self.cor_fundo, highlightthickness=0, height=350)
         self.canvas.pack(fill=tk.BOTH, expand=True)
         
@@ -245,7 +238,7 @@ class Missao2:
         self._atualizar_controles_etapa()
 
     def _executar_bfs_step(self):
-        """Executa um único passo da BFS (desenfileira, processa vizinhos, enfileira)."""
+
         if not self.bfs_queue:
             return False 
 
@@ -284,7 +277,6 @@ class Missao2:
         
         is_scc_gabarito = self.is_scc_gabarito
         
-        # 1. VALIDAÇÃO NA DECISÃO REVERSO (Após a BFS de Ida)
         if self.current_step == 2:
             bfs1_falhou = len(self.all_nodes) != len(self.visited_original)
             
@@ -294,29 +286,28 @@ class Missao2:
                     self._finalizar_missao(is_scc=False, msg="O Analista concluiu a falha após a primeira BFS. Decisão correta.")
                     return
                 else:
-                    self.status_message = "❌ Erro! A BFS de Ida alcançou TUDO. Você DEVE testar o Reverso para confirmar o retorno. Decisão Incorreta."
+                    self.status_message = "Erro! A BFS de Ida alcançou TUDO. Você DEVE testar o Reverso para confirmar o retorno. Decisão Incorreta."
                     return
             elif action_voto == "MONTAR_REVERSO":
                 if bfs1_falhou:
-                    self.status_message = "❌ Erro! A BFS de Ida falhou. Não há por que montar o Reverso (Perda de tempo/recursos). Decisão Incorreta."
+                    self.status_message = "Erro! A BFS de Ida falhou. Não há por que montar o Reverso (Perda de tempo/recursos). Decisão Incorreta."
                     return
                 else:
                     self.current_step = 3 
                     self._proximo_passo(action="MONTAR_REVERSO")
                     return
 
-        # 2. VALIDAÇÃO FINAL (Após a BFS de Volta)
+
         elif self.current_step == 4:
             is_scc_voto = True if action_voto == "VEREDITO_SCC" else False
             
-            # NOTA: O gabarito é SCC, então a decisão correta é VEREDITO_SCC
             if is_scc_voto == self.is_scc_gabarito:
                 self.current_step = 6 
                 self._finalizar_missao(is_scc=is_scc_voto, msg="")
                 return
             else:
                 gabarito_msg = "Fortemente Conectado" if self.is_scc_gabarito else "Fracamente Conectado"
-                self.status_message = f"❌ Erro! O diagnóstico real é: {gabarito_msg}. Sua decisão está errada."
+                self.status_message = f"Erro! O diagnóstico real é: {gabarito_msg}. Sua decisão está errada."
                 return
         
         self._montar_tela_missao()
@@ -332,7 +323,6 @@ class Missao2:
                 self.current_step = 2 if self.current_step == 1 else 4
                 self.status_message = "BFS CONCLUÍDA. Analise o resultado e tome a decisão crítica."
                 
-                # Mensagem de conclusão da BFS de Volta (Step 4)
                 if self.current_step == 4:
                     if len(self.all_nodes) == len(self.visited_transposed):
                          messagebox.showinfo("Resultado da BFS Reversa", "SUCESSO! O Grafo Reverso alcançou TODOS os nós. O caminho de volta está garantido!")
@@ -380,10 +370,8 @@ class Missao2:
             bfs1_falhou = len(self.all_nodes) != len(self.visited_original)
             
             if bfs1_falhou:
-                 # Se falhou na IDA, a ÚNICA opção lógica é Falhar Precocemente.
                  ttk.Button(self.controls_frame, text="NÃO, ROTAS FRACAS (Confirma Diagnóstico)", command=lambda: self._validar_decisao("FALHA_PRECOCE")).pack(fill=tk.X, pady=5)
             else:
-                 # Se sucedeu na IDA, a única opção lógica é Montar Reverso.
                  ttk.Button(self.controls_frame, text="Sim, Montar Grafo Reverso (G^T)", command=lambda: self._validar_decisao("MONTAR_REVERSO")).pack(fill=tk.X, pady=5)
             
             ttk.Button(self.controls_frame, text="Crítica de Rota: Analisar Alcançabilidade", command=lambda: self._mostrar_critica_ida()).pack(fill=tk.X, pady=5)
@@ -392,11 +380,10 @@ class Missao2:
             
             if self.is_scc_gabarito == False:
                  self.lbl_status.config(text="VEREDICTO: A conexão é FRACAMENTE CONECTADA. Confirme o diagnóstico.")
-                 # Única opção lógica é NÃO
+
                  ttk.Button(self.controls_frame, text="NÃO, ROTAS FRACAS (Confirma Diagnóstico)", command=lambda: self._validar_decisao("VEREDITO_NAO_SCC")).pack(fill=tk.X, pady=5)
             else:
                  self.lbl_status.config(text="VEREDICTO: Compare BFS(G) e BFS(G^T). A conexão é forte?")
-                 # Opções para Grafo Forte (SCC)
                  ttk.Button(self.controls_frame, text="Não, Rotas Fracas", command=lambda: self._validar_decisao("VEREDITO_SCC")).pack(fill=tk.X, pady=2)
             
 
@@ -409,7 +396,6 @@ class Missao2:
             self.btn_next.pack(fill=tk.X)
 
     def _mostrar_conceito_ajuda(self):
-        """Exibe uma caixa de diálogo com as definições de BFS, SCC e Grafo Reverso."""
         
         full_message = "\n\n".join([f"**{k}**: {v}" for k, v in self.conceitos.items()])
         
@@ -425,7 +411,7 @@ class Missao2:
         if missed_nodes:
             messagebox.showinfo(
                 "Crítica de Rota (Ida)",
-                f"Sua BFS de Ida (Grafo Original G) FALHOU em alcançar os sistemas: {', '.join(missed_nodes)}. Lembre-se: para SCC, 100% dos nós devem ser alcançados na IDA."
+                f"Sua BFS de Ida (Grafo Original G) FALHOU em alcançar os sistemas: {', '.join(missed_nodes)}. Lembre-se: para FORTEMENTE CONECTADO, 100% dos nós devem ser alcançados na IDA."
             )
         else:
             messagebox.showinfo(
@@ -440,12 +426,12 @@ class Missao2:
         if missed_nodes:
             messagebox.showinfo(
                 "Crítica de Rota (Volta)",
-                f"Sua BFS de Volta (Grafo Reverso G^T) FALHOU em alcançar os sistemas: {', '.join(missed_nodes)}. Lembre-se: se G^T não alcança todos, o retorno falha! (NÃO SCC)"
+                f"Sua BFS de Volta (Grafo Reverso G^T) FALHOU em alcançar os sistemas: {', '.join(missed_nodes)}. Lembre-se: se G^T não alcança todos, o retorno falha! (NÃO FORTEMENTE CONECTADO)"
             )
         else:
             messagebox.showinfo(
                 "Crítica de Rota (Volta)",
-                "SUCESSO! O Grafo Reverso alcançou todos os todos os sistemas. O caminho de volta está garantido. (Muito provável que seja SCC)"
+                "SUCESSO! O Grafo Reverso alcançou todos os todos os sistemas. O caminho de volta está garantido. (Muito provável que seja FORTEMENTE CONECTADO)"
             )
 
 
