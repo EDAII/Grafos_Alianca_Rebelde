@@ -91,11 +91,47 @@ Você deve explorar o grafo utilizando BFS para identificar, de forma eficiente,
 
 ---
 
-### Missão 2: *LARISSA*
+### Missão 2: Estabilidade das Rotas (Grafo Fortemente Conectado)
 
+**Objetivo:** Diagnosticar a estabilidade das rotas e garantir a segurança da frota ao verificar se todos os sistemas são mutuamente alcançáveis (ida e volta).
+
+**Operações ensinadas:** - Criação e uso do **Grafo Reverso**.  
+- Execução de **Duas Buscas em Largura (BFS)**: uma no grafo original (G) e outra no grafo reverso.  
+- Validação do **Fator de Conectividade** (se 100% dos nós são alcançados nas duas direções).  
+- Tomada de **Decisão Estrita** sobre a necessidade de recursos (montar Grafo Reverso) e o veredito final.  
+
+**Contexto:** O Império sabotou os hiper-roteadores ao criar rotas unidirecionais. Assim, a **Frota Rebelde** só está segura se o conjunto de sistemas for **Fortemente Conectado** o que garante que o caminho de VOLTA exista. Sua tarefa é usar o diagnóstico de Duas BFS para confirmar a estabilidade total das rotas.
+
+---
+
+### Missão 3: Infiltração na Base (Busca em Profundidade - DFS)
+
+**Objetivo:** Encontrar um caminho seguro para plantar um explosivo no núcleo da base Imperial ao explorar todos os túneis de ventilação possíveis.
+
+**Operações ensinadas:** - Simulação da **Recursão** (mergulho em profundidade).  
+- Visualização do **Backtracking** (Recuo Tático): O retorno da função quando um beco sem saída é atingido.  
+- Marcação de **visitados** para evitar loops infinitos.  
+- Rastreamento do caminho de infiltração.  
+
+**Contexto:** Você está nos dutos de ventilação da base inimiga. O **DFS** é usado para explorar cada caminho até o fim antes de tentar o próximo. Sua missão é observar o Backtracking e garantir que todas as rotas sejam verificadas para encontrar o caminho seguro e completar a infiltração.
 
 
 ---
+
+### Missão 4: Negociação de Alianças (Grafo Bipartido)
+
+**Objetivo:** Organizar os planetas da Orla Externa em dois grupos de aliança (Rebeldes e Neutros) ao garantir que não haja conflito de interesses.
+
+**Operações ensinadas:** - Conceito de **Coloração** (2-Coloring).  
+- Implementação de um algoritmo de busca (BFS) para colorir nós vizinhos com cores opostas.  
+- Detecção de **Conflito de Cor** (Vizinhos com a mesma cor) o que indica que o grafo não é Bipartido.  
+- Validação da regra: **arestas só podem existir entre grupos de cores diferentes.**
+
+**Contexto:** A Princesa Leia precisa formar uma frente unida. Os planetas só podem se aliar (ligação) se pertencerem a grupos diferentes. Você deve usar a coloração para dividir os planetas em **Grupo Rebelde (Azul)** e **Grupo Neutro (Vermelho)**. Se for detectado um conflito, a aliança é instável e a negociação falha.
+
+
+---
+
 
 ## Dados Utilizados
 
